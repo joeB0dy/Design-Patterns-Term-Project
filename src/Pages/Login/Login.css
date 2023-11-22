@@ -1,0 +1,31 @@
+/* Styles for Login Container */
+.login-container {
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+  height: 40vh; /* Set the height of the container to 40% of the viewport height */
+}
+
+/* Styles for Input Groups */
+.input-group {
+  margin-bottom: 15px; /* Add space below each input group */
+  text-align: center; /* Center the text within the input group */
+}
+
+/* Styles for Labels */
+label {
+  margin-bottom: 5px; /* Add space below each label */
+  width: 100px; /* Set a fixed width for the labels */
+  text-align: right; /* Align the text to the right */
+}
+
+/* Styles for Input Fields */
+input {
+  padding: 6px; /* Add padding around the input content */
+  border: 1.8px solid #716f6f; /* Set border properties */
+  border-radius: 4px; /* Add rounded corners to the input */
+  width: 306px; /* Set a fixed width for the input fields */
+  box-sizing: border-box; /* Include padding and border in the total width */
+  text-align: center; /* Center the text within the input */
+}
