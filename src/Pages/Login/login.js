@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
@@ -10,7 +10,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === "admin" && password === "password") {
-      navigate("/adminpage/view"); //change this
+      navigate("/main"); //change this
     } else {
       alert("Invalid username or password");
     }
@@ -39,8 +39,12 @@ function Login() {
         <button type="submit" onClick={handleSubmit}>
           Login
         </button>
-      </form>
+        </form>
+        <div> 
+          <Link to="/signup">Register New Account </Link>
+      </div>
     </div>
+
   );
 }
 
