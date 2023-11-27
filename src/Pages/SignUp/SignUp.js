@@ -38,6 +38,16 @@ function SignUp() {
     console.log(response); // Handle the response accordingly
     alert("Account Made, verification send to email.")
   };
+
+  const sendDatabase = async () => {
+    try{
+      const userinput = await axios.post('http://localhost:8081/signup', {email, password, answer1, answer2, answer3});
+      console.log(response.data);
+    } catch(error){
+      console.error('Error occurred', error);
+    }
+  };
+
   return (
     <div className="div-container">
       <h2>SIGNUP PAGE</h2>
@@ -76,6 +86,7 @@ function SignUp() {
           <input type="SecQ2" onChange={(e) => setSec2(e.target.value)}
           placeholder="Enter Answer" />
         </div>
+
         <div className="SECQ3">
           <label for="cars">Security Question 3:</label>
           <label for="child">
@@ -92,6 +103,8 @@ function SignUp() {
       </form>
     </div>
   );
+
+
 }
 export default SignUp;
 /*
