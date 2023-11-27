@@ -3,7 +3,7 @@ class AuthService {
     user = null;
     constructor() {
       if (instance){alert("USER STILL LOGGED IN")}
-      user = 
+     
     }
     static getInstance() {
       if (AuthService.instance === null) {
