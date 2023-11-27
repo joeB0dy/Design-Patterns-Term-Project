@@ -21,7 +21,7 @@ function Login() {
       if (response) {
           // Login successful
           navigate("/main");
-      } else {
+      } else if (username == "asdf"){
           // Credentials are incorrect, show an error message
           alert(response.message);
       }

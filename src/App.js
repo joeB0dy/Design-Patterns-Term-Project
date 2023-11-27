@@ -8,6 +8,12 @@ import LockScreen from "react-lock-screen";
 
 
 export default function App() {
+  const [showForm, setShowForm] = useState(true); // State to control form visibility
+ 
+  // Function to toggle the form visibility
+  const toggleFormVisibility = () => {
+    setShowForm(!showForm);
+};
 
   const getLockScreen = setLock => {
     return(
@@ -31,15 +37,23 @@ export default function App() {
 
   return (
     <div className="App">
-      <LockScreen timeout = {5000} ui={getLockScreen}>
+      <LockScreen timeout = {10000} ui={getLockScreen}>
       <h1>MyPass Password Master System</h1>
       <button onClick={() => navigate("/login")}>Login Page </button>
       <button onClick={() => navigate("/")}>Home </button>
+      
       <div>
-            <h1>Data from Server</h1>
-            {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+            <button onClick={toggleFormVisibility}>
+                {showForm ? 'Hide Logins' : 'Show Logins'}
+            </button>
+
+            {showForm && (
+                <div>
+                    <h1>Data from Server</h1>
+                    {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+                </div>
+            )}
         </div>
-        
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<MainPage />} />
