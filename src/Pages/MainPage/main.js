@@ -6,6 +6,7 @@ function MainPage() {
   return (
     <div>
       <h1> WELCOME TO MAINPAGE</h1>
+      <p>Look at all this sensitive information below...</p>
       <button onClick={() => navigate("/")}>LOGOUT </button>
     </div>
   );

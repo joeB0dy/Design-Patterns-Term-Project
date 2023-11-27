@@ -2,22 +2,34 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 import AuthService from "../../components/AuthService";
+import axios from "axios";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
+ 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
-    const response = AuthService.getInstance().login(username, password);
-    if (response) {
-      navigate("/main");
-    } else {
-      alert(response.message); // Show appropriate error message
-    }
+    try {
+      const response = await axios.post('http://localhost:8081/api/login', {
+          username, password
+      });
+
+      if (response) {
+          // Login successful
+          navigate("/main");
+      } else {
+          // Credentials are incorrect, show an error message
+          alert(response.message);
+      }
+  } catch (error) {
+      // Handle errors (e.g., server error, network error)
+      console.error("Login error", error);
+      alert("An error occurred while trying to log in.");
+  }
   };
 
   return (

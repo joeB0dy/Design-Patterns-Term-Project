@@ -1,27 +1,40 @@
+import axios from "axios";
+let instance;
+let user = { 
+  email:"",
+  password: "",
+  sec1: "",
+  sec2:"",
+  sec3:""
+}
 class AuthService {
-  static instance = null;
-  user = null;
-isLoggedIn = false;
+
 
   constructor() {
-    if (AuthService.instance) {
+    if (instance) { //fail condition if instance exists.
       throw new Error("You can only create one instance!");
     }
+    instance = this;
   }
 
-  static getInstance() {
-    if (AuthService.instance === null) {
-      AuthService.instance = new AuthService();
-    }
-    return AuthService.instance;
+    getInstance() {
+
+    return instance;
   }
   
     register(email, password, secQ1, secQ2, secQ3) {
-      // Implement registration logic
-   
+         
       // Store user data securely
       this.user = { email, password, secQ1, secQ2, secQ3 };
-      // Return a success or error message
+      //upload to backend as post command
+      return axios.post('http://localhost:8081/api/register',{
+          email: email,
+          password: password,
+          secQ1: secQ1,
+          secQ2: secQ2,
+          secQ3, secQ3
+    });
+    
     }
   
   login(username, password) {
