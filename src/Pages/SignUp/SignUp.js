@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
+import AuthService from "../../components/AuthService";
+
 function SignUp() {
   //variables and functions
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showFlag, setShowFlag] = useState(false); // State to manage flag notification
+  
+  const user = new AuthService.getInstance();
 
   const displayContent = (e) => {
     e.preventDefault();
     console.log(email);
     console.log(password);
-    setShowFlag(true); // Set flag to display notification
-    // You can trigger email verification or any necessary action here
+    // Call the register method from AuthService
+    const response = user.register(email, password, /* Add security questions data here */);
+    console.log(response); // Handle the response accordingly
+    alert("Account Made, verification send to email.")
   };
   return (
     <div className="div-container">
@@ -85,11 +91,7 @@ function SignUp() {
           <button onClick={displayContent}>SIGN UP </button>
           <p>YOU AGREE TO OUR TERMS AND CONDITIONS. </p>
         </div>
-        {showFlag && (
-        <div className="flag-notification">
-          alert("Account Made, verification send to email.")
-        </div>
-      )}
+
       </form>
     </div>
   );

@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
+import AuthService from "../../components/AuthService";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username === "admin" && password === "password") {
-      navigate("/main"); //change this
+
+    const response = AuthService.getInstance().login(username, password);
+    if (response.success) {
+      navigate("/main");
     } else {
-      alert("Invalid username or password");
+      alert(response.message); // Show appropriate error message
     }
   };
 
@@ -49,3 +53,15 @@ function Login() {
 }
 
 export default Login;
+
+
+/*
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username === "admin" && password === "password") {
+      navigate("/main"); //change this
+    } else {
+      alert("Invalid username or password");
+    }
+  };
+ */
