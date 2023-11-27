@@ -4,9 +4,20 @@ import Login from "./Pages/Login/login";
 import MainPage from "./Pages/MainPage/main";
 import SignUp from "./Pages/SignUp/SignUp"
 import React, { useState, useEffect } from 'react';
+import LockScreen from "react-lock-screen";
 
 
 export default function App() {
+
+  const getLockScreen = setLock => {
+    return(
+      <div className = "react-lock-screen__ui">
+        <p>Screen has been locked</p>
+        <button onClick={()=>setLock(false)}>unlock</button>
+      </div>
+    )
+  };
+
   const navigate = useNavigate();
   const [data, setData] = useState(null);
 
@@ -20,7 +31,7 @@ export default function App() {
 
   return (
     <div className="App">
-
+      <LockScreen timeout = {5000} ui={getLockScreen}>
       <h1>MyPass Password Master System</h1>
       <button onClick={() => navigate("/login")}>Login Page </button>
       <button onClick={() => navigate("/")}>Home </button>
@@ -34,7 +45,7 @@ export default function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/signup" element={<SignUp/>}/>
       </Routes>
-   
+      </LockScreen>
     </div>
     
   );
