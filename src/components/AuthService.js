@@ -1,11 +1,12 @@
 class AuthService {
     static instance = null;
     user = null;
+
     constructor() {
-      if (instance){alert("USER STILL LOGGED IN")}
-     
+      //if (instance){alert("USER STILL LOGGED IN")}
+    
     }
-    static getInstance() {
+    static getInstance() {  //method to retrieve instance.
       if (AuthService.instance === null) {
         AuthService.instance = new AuthService();
         
@@ -13,7 +14,7 @@ class AuthService {
       return AuthService.instance;
     }
   
-    register(email, password, securityQuestions) {
+    register(email, password, secQ1, secQ2, secQ3) {
       // Implement registration logic
       this.email = email
       this.password = password

@@ -7,16 +7,15 @@ function SignUp() {
   //variables and functions
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showFlag, setShowFlag] = useState(false); // State to manage flag notification
+
   
-  const user = new AuthService.getInstance();
 
   const displayContent = (e) => {
     e.preventDefault();
     console.log(email);
     console.log(password);
     // Call the register method from AuthService
-    const response = user.register(email, password, /* Add security questions data here */);
+   // const response = user.register(email, password, /* Add security questions data here */);
     console.log(response); // Handle the response accordingly
     alert("Account Made, verification send to email.")
   };
@@ -45,46 +44,22 @@ function SignUp() {
         <div className="SECQ1">
           <label for="cars">Security Question 1:</label>
 
-          <select name="questions" id="q1">
-            <option value="Mama">"What is your mother's maiden name?"</option>
-            <option value="Pet">
-              "What is the name of your favorite pet?"
-            </option>
-            <option value="School">"What high school did you attend"</option>
-            <option value="Child">
-              "What was your favorite food as a child"
-            </option>
-          </select>
+          
+            <label for="mama">"What is your mother's maiden name?"</label>
           <input type="SecQ1" placeholder="Enter Answer" />
         </div>
 
         <div className="SECQ2">
           <label for="cars">Security Question 2:</label>
-
-          <select name="questions" id="q2">
-            <option value="Mama">"What is your mother's maiden name?"</option>
-            <option value="Pet">
-              "What is the name of your favorite pet?"
-            </option>
-            <option value="School">"What high school did you attend"</option>
-            <option value="Child">
-              "What was your favorite food as a child"
-            </option>
-          </select>
+          <label for="pet"> "What is the name of your favorite pet?"</label>
+       
           <input type="SecQ1" placeholder="Enter Answer" />
         </div>
         <div className="SECQ3">
           <label for="cars">Security Question 3:</label>
-          <select name="questions" id="q3">
-            <option value="Mama">"What is your mother's maiden name?"</option>
-            <option value="Pet">
-              "What is the name of your favorite pet?"
-            </option>
-            <option value="School">"What high school did you attend"</option>
-            <option value="Child">
+          <label for="child">
               "What was your favorite food as a child"
-            </option>
-          </select>
+            </label>
           <input type="SecQ1" placeholder="Enter Answer" />
         </div>
         <div>
