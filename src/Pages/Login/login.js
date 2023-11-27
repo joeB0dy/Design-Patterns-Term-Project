@@ -13,7 +13,7 @@ function Login() {
     e.preventDefault();
 
     const response = AuthService.getInstance().login(username, password);
-    if (response.success) {
+    if (response) {
       navigate("/main");
     } else {
       alert(response.message); // Show appropriate error message

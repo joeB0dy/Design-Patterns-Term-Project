@@ -15,7 +15,7 @@ function SignUp() {
     console.log(email);
     console.log(password);
     // Call the register method from AuthService
-   // const response = user.register(email, password, /* Add security questions data here */);
+    const response = AuthService.getInstance().register(email, password, /* Add security questions data here */);
     console.log(response); // Handle the response accordingly
     alert("Account Made, verification send to email.")
   };
