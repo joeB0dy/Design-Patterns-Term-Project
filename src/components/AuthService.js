@@ -1,42 +1,37 @@
 class AuthService {
-    static instance = null;
-    user = null;
+  static instance = null;
+  user = null;
+isLoggedIn = false;
 
-    constructor() {
-      //if (instance){alert("USER STILL LOGGED IN")}
-    
+  constructor() {
+    if (AuthService.instance) {
+      throw new Error("You can only create one instance!");
     }
-    static getInstance() {  //method to retrieve instance.
-      if (AuthService.instance === null) {
-        AuthService.instance = new AuthService();
-        
-      }
-      return AuthService.instance;
+  }
+
+  static getInstance() {
+    if (AuthService.instance === null) {
+      AuthService.instance = new AuthService();
     }
+    return AuthService.instance;
+  }
   
     register(email, password, secQ1, secQ2, secQ3) {
       // Implement registration logic
-      this.email = email
-      this.password = password
+   
       // Store user data securely
+      this.user = { email, password, secQ1, secQ2, secQ3 };
       // Return a success or error message
     }
   
-    async login(username, password) {
-        try {
-            const response = await fetch('http://localhost:8081/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Login error', error);
-            return { success: false, message: 'Login failed' };
-        }
+  login(username, password) {
+      if (this.user.email == username && this.user.password == password) {
+        console.log("Login Successful")
+        this.user.isLoggedIn = true;
+        return true;
+      }
+      console.log("LOGIN FAILED")
+      return false;
     }
 
     isLoggedIn() {
@@ -53,8 +48,25 @@ class AuthService {
       // Implement logout logic
       this.user = null;
       // Perform cleanup actions if necessary
+      this.user.isLoggedIn = false;
     }
   }
   
   export default AuthService;
   
+  /*
+          try {
+            const response = await fetch('http://localhost:8081/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Login error', error);
+            return { success: false, message: 'Login failed' };
+        }
+  */
