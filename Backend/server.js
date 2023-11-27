@@ -40,6 +40,22 @@ app.post('/api/login', (req, res) => {
     });
 });
 
+// Endpoint to handle user registration
+app.post('/register', (req, res) => {
+    const { email, password, answer1, answer2, answer3 } = req.body;
+  
+    // Insert user credentials into the database
+    connection.query('INSERT INTO Users (email, maste_password_hash, security_answer1, security_answer2, security_answer3) VALUES (?, ?, ?, ?)', [email, password, answer1, answer2, answer3], (error, results) => {
+      if (error) {
+        console.error('Error registering user:', error);
+        res.status(500).json({ error: 'Error registering user' });
+      } else {
+        console.log('User registered successfully');
+        res.json({ message: 'User registered successfully' });
+      }
+    });
+  });
+
 app.listen(8081, ()=>{
     console.log("listening");
 })
