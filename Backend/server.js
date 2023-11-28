@@ -1,4 +1,4 @@
-
+//server js components, connection and hosting built by gabriel 
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -18,6 +18,8 @@ const db = mysql.createConnection({
     database: 'sql5665289'
 
 })
+
+//api data , login, register calls built by Sam.
 
 // Endpoint to just display data.
 app.get('/api/data', (req, res) => {

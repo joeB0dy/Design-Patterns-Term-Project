@@ -1,3 +1,5 @@
+//Password Director Built by Sam.
+
 export class passwordDirector{     //class will be called to direct the building of password
 
 

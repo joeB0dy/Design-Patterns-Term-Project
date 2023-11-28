@@ -1,7 +1,8 @@
+
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
-import AuthService from "../../components/AuthService";
+import {AuthService} from "../../components/AuthService";
 import axios from "axios";
 
 function Login() {

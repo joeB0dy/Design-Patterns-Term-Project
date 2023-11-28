@@ -1,3 +1,5 @@
+//Gabriel - LockScreen Component, Routing
+//Samuel - Routing, Signup, Login, Password Gen Component.
 import "./styles.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./Pages/Login/login";
@@ -16,7 +18,7 @@ export default function App() {
     setShowForm(!showForm);
 };
 
-  const getLockScreen = setLock => {
+  const getLockScreen = setLock => {    //Gabriel.
     return(
       <div className = "react-lock-screen__ui">
         <p>Screen has been locked</p>
@@ -38,7 +40,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <LockScreen timeout = {10000} ui={getLockScreen}>
+      <LockScreen timeout = {250000} ui={getLockScreen}>     
       <h1>MyPass Password Master System</h1>
       <button onClick={() => navigate("/login")}>Login Page </button>
       <button onClick={() => navigate("/")}>Home </button>
