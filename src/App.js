@@ -5,6 +5,7 @@ import MainPage from "./Pages/MainPage/main";
 import SignUp from "./Pages/SignUp/SignUp"
 import React, { useState, useEffect } from 'react';
 import LockScreen from "react-lock-screen";
+import PasswordGenComponent from "./components/passwordGenComponent";
 
 
 export default function App() {
@@ -58,6 +59,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/signup/passgen" element={<PasswordGenComponent/>}/>
       </Routes>
       </LockScreen>
     </div>

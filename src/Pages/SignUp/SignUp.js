@@ -1,8 +1,11 @@
+//SIGNUP and API Calls developed by Sam Jose.
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import AuthService from "../../components/AuthService";
 import axios from "axios";
+import PasswordGenComponent from "../../components/passwordGenComponent";
+
 function SignUp() {
   //variables and functions
   const [email, setEmail] = useState("");
@@ -10,7 +13,7 @@ function SignUp() {
   const [sec1, setSec1] = useState("");
   const [sec2, setSec2] = useState("");
   const [sec3, setSec3] = useState("");
-
+const nav = useNavigate();
   const register = async (email, password, secQ1, secQ2, secQ3) => {
     try {
       const response = await axios.post('http://localhost:8081/api/register', {
@@ -99,7 +102,9 @@ function SignUp() {
           <button onClick={displayContent}>SIGN UP </button>
           <p>YOU AGREE TO OUR TERMS AND CONDITIONS. </p>
         </div>
-
+        <div>
+          <button onClick={()=> nav("/signup/passgen")}>Password Generator Page </button>
+        </div>
       </form>
     </div>
   );
